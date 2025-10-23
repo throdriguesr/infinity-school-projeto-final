@@ -1,15 +1,17 @@
-// Importar o Express
+// Importar o Express e o CORS
 const express = require('express');
+const cors = require('cors');
 
-// Criar a aplicação
+// Criar a aplicação (o servidor)
 const app = express();
 const port = 3000; // A porta que o servidor vai usar
 
+// Configuração importante: CORS (Cross-Origin Resource Sharing)
+// Permite que o frontend (aberto como arquivo ou em outra porta) acesse este backend.
+app.use(cors());
+
 // Configuração importante: Permite que o servidor entenda JSON (dados enviados)
 app.use(express.json());
-
-// Configuração importante: Permite que o frontend acesse o backend (CORS)
-// Para um projeto simples, podemos liberar todas as origens, mas em um real, restringiria.
 
 // Exemplo de Banco de Dados Simples (em memória)
 let recursosInventario = [
@@ -17,6 +19,7 @@ let recursosInventario = [
     { id: 2, nome: "Batmóvel", localizacao: "Subsolo B2", status: "Manutenção" },
     { id: 3, nome: "Colete Balístico Tipo A", localizacao: "Arsenal Pessoal", status: "Ativo" }
 ];
+
 
 // ROTAS DO SISTEMA DE GERENCIAMENTO DE SEGURANÇA (Autenticação básica)
 
@@ -44,7 +47,7 @@ app.post('/api/login', (req, res) => {
 
 // Rota 1: LISTAR todos os recursos
 app.get('/api/recursos', (req, res) => {
-    // Retorna a lista de recursos que temos no nosso "banco de dados"
+    // Retorna a lista de recursos que temos no "banco de dados"
     res.status(200).json(recursosInventario);
 });
 
@@ -53,7 +56,7 @@ app.post('/api/recursos', (req, res) => {
     // Pega o novo recurso do frontend
     const novoRecurso = req.body;
     // Cria um ID simples para ele
-    novoRecurso.id = recursosInventario.length + 1; 
+    novoRecurso.id = recursosInventario.length > 0 ? recursosInventario[recursosInventario.length - 1].id + 1 : 1; 
 
     // Adiciona à lista
     recursosInventario.push(novoRecurso);
@@ -63,29 +66,26 @@ app.post('/api/recursos', (req, res) => {
 });
 
 // Rota 3: REMOVER um recurso
-// é usado :id para dizer ao Express que esperamos um ID na URL (ex: /api/recursos/2)
 app.delete('/api/recursos/:id', (req, res) => {
-    // O req.params.id vem como string, precisamos converter para número
-    const idParaRemover = parseInt(req.params.id); 
+    // O ID vem da URL (ex: /api/recursos/2)
+    const recursoId = parseInt(req.params.id);
 
-    // Encontra o índice (posição) do recurso na nossa lista (array)
-    const indice = recursosInventario.findIndex(recurso => recurso.id === idParaRemover);
+    // Encontra o índice do recurso na lista
+    const index = recursosInventario.findIndex(r => r.id === recursoId);
 
-    // Se o recurso for encontrado (indice for maior ou igual a 0)
-    if (indice !== -1) {
-        // Remove 1 item a partir daquela posição
-        recursosInventario.splice(indice, 1);
-        // Resposta de sucesso sem conteúdo
+    if (index !== -1) {
+        // Remove 1 elemento a partir desse índice
+        recursosInventario.splice(index, 1);
+        // Status 204 significa "Sem Conteúdo", mas sucesso na operação
         res.status(204).send(); 
-        console.log(`Recurso com ID ${idParaRemover} removido.`);
     } else {
-        // Resposta de erro se o recurso não for encontrado
+        // Recurso não encontrado
         res.status(404).json({ mensagem: 'Recurso não encontrado.' });
     }
 });
 
-// INICIAR O SERVIDOR
 
+// INICIAR O SERVIDOR
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
     console.log('Backend iniciado. Agora, abra o arquivo frontend/index.html no seu navegador.');

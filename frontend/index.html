@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indústrias Wayne - Sistema de Segurança</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Indústrias Wayne - Dashboard de Segurança e Recursos</h1>
+    </header>
+
+    <main>
+        <section id="login-section">
+            <h2>Acesso Restrito</h2>
+            <form id="login-form">
+                <input type="text" id="usuario" placeholder="Usuário" required>
+                <input type="password" id="senha" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+                <p id="mensagem-erro" style="color: red; display: none;">Credenciais Inválidas.</p>
+            </form>
+        </section>
+
+        <section id="dashboard-section" style="display: none;">
+            <h2>Bem-vindo, Administrador!</h2>
+            
+            <div class="card">
+                <h3>Resumo de Segurança</h3>
+                <p>Status: <span style="color: green;">Tudo OK</span></p>
+                <p>Acessos nas últimas 24h: 45</p>
+            </div>
+
+            <div class="card">
+                <h3>Gestão de Recursos (Inventário)</h3>
+                <form id="adicionar-recurso-form">
+                    <input type="text" id="novo-nome" placeholder="Nome do Recurso" required>
+                    <input type="text" id="novo-local" placeholder="Localização" required>
+                    <button type="submit">Adicionar Recurso</button>
+                </form>
+
+                <br>
+                <h4>Inventário Atual:</h4>
+                <ul id="lista-recursos">
+                    </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Projeto Final - Indústrias Wayne</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

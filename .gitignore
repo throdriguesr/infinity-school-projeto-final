@@ -1,0 +1,18 @@
+1. Dependências e Módulos
+
+/backend/node_modules
+
+2. Arquivos de Logs e Cache
+
+.log
+npm-debug.log
+
+3. Arquivos de Configuração de Ambiente
+
+.env
+.env.local
+.env.*.local
+
+4. Arquivos Temporários de Sistemas Operacionais
+
+Thumbs.db

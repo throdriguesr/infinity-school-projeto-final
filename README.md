@@ -1,4 +1,4 @@
-# 🛠️ Projeto: WAYNE ENTERPRISES - Sistema de Gerenciamento de Segurança
+# WAYNE ENTERPRISES - Sistema de Gerenciamento de Segurança
 
 Este projeto é um sistema web básico para gerenciamento de segurança e recursos, desenvolvido para simular um ambiente de trabalho da **Wayne Enterprises**. O foco está no controle de acesso e na exibição de um painel de gerenciamento com diferentes níveis de permissão.
 
@@ -17,7 +17,7 @@ O sistema simula um ambiente de gerenciamento de recursos com foco em três nív
 O projeto é uma aplicação Single Page Application (SPA) desenvolvida com as seguintes tecnologias e bibliotecas front-end:
 
 * **HTML5** (`index.html`): Estrutura semântica e esqueleto do sistema.
-* **CSS3** (`style.css`): Estilização, design responsivo e tema visual "dark mode" com foco nas cores da Wayne Enterprises (Preto e Ouro).
+* **CSS3** (`style.css`): Estilização, design responsivo e tema visual.
 * **JavaScript (Puro)** (`script.js`): Lógica de programação para controle de acesso, manipulação de DOM e gerenciamento de dados.
 * **Chart.js**: Biblioteca utilizada para gerar o gráfico de visualização de recursos no Painel de Controle.
 
@@ -50,6 +50,6 @@ O painel de gerenciamento (acessível após o login) permite a manipulação de 
 ## 🚀 Como Executar o Projeto
 
 1.  **Download:** Baixe ou clone os arquivos do projeto (`index.html`, `style.css`, `script.js`).
-2.  **Estrutura:** Mantenha os três arquivos (e as imagens utilizadas, como `logo-gold.png` e `Wayne-E-thumb.png`, se existirem) na mesma pasta.
+2.  **Estrutura:** Mantenha os três arquivos (e as imagens utilizadas, `logo-gold.png` e `Wayne-E-thumb.png`) na mesma pasta.
 3.  **Execução:** Abra o arquivo **`index.html`** em qualquer navegador web moderno (Google Chrome é o recomendado).
 4.  **Primeiro Uso:** Utilize o botão **"Novo Usuário"** na tela de **Controle de Acesso** para criar sua primeira conta e iniciar o sistema.

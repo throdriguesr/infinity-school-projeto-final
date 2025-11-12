@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Indústrias Wayne - Sistema de Gerenciamento de Segurança">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Indústrias Wayne</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="wayne_enterprises_logo.jpg" alt="Indústrias Wayne" class="logo left-logo" style="height: 90px;">
+            <div class="header-text">
+                <h1>Indústrias Wayne</h1>
+                <p>Sistema de Gerenciamento de Segurança</p><br>
+            </div>
+            <img src="wayne_enterprises_logo.jpg" alt="Indústrias Wayne" class="logo right-logo" style="height: 90px;">
+        </div>
+    </header>
+    
+    <main>
+        <div class="card-container">
+            <section id="controleAcesso" class="painel-card controle-acesso">
+                <h2 class="card-title">Controle de Acesso</h2><br>
+                <form id="formLogin">
+                    <div class="input-group">
+                        <input type="text" id="usuario" placeholder="Usuário" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="senha" placeholder="Senha" required>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit" class="login-button">Login</button>
+                        <button type="button" class="forgot-password-button" id="esqueciSenhaButton">Esqueci a Senha</button>
+                        <button type="button" class="new-user-button" id="novoUsuarioButton">Novo Usuário</button>
+                    </div>                
+                </form>
+                <div id="displayPapelUsuario"></div>
+            </section>
+
+            <section id="userIdentification" style="display:none;" class="painel-card transparente-card">
+                <h2 class="card-title">Identificação do Usuário</h2>
+                <div id="displayPapelUsuario"></div>
+                <div id="boasVindas" style="display: none;">
+                    Bem-vindo, <span id="usuarioNome" class="usuario-nome"></span> ! <p>Você está logado como: <span id="nivelCredencial" class="nivel-credencial"></span></p> 
+                </div>  
+                <br>
+                <button type="button" class="logout-button" id="logoutButton" style="display: block; margin: 0 auto;">Sair</button>
+            </section>
+
+            <section id="cadastro" style="display:none;" class="painel-card">
+                <h2 class="card-title">Cadastro de Usuário</h2><br>
+                <form id="formCadastro">
+                    <div class="input-group">
+                        <input type="text" id="novoUsuario" placeholder="Nome de Usuário" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="emailUsuario" placeholder="E-mail" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="novaSenha" placeholder="Senha" required>
+                    </div>
+                    <div class="input-group" style="margin-bottom: 10px;"></div>
+                    <div class="input-group">
+                        <input type="password" id="confirmacaoSenha" placeholder="Confirme a Senha" required>
+                    </div>
+                    <div class="input-group">
+                        <select id="tipoUsuario" required>
+                            <option value="">Tipo de Usuário</option>
+			                <option value="administrador">Administrador</option>                            
+                            <option value="gerente">Gerente</option>
+			                <option value="funcionario">Funcionário</option>
+                            
+                        </select>
+                    </div>
+                    <div class="input-group" id="codigoAdminContainer" style="display:none;">
+                        <input type="text" id="codigoAdmin" placeholder="Digite o Código do Usuário" required>
+                    </div>
+                    <div class="button-container" style="justify-content: center;"> 
+                        <button type="button" class="register-button" id="cadastrarUsuario">Cadastrar</button>
+                        <button type="button" class="cancel-button" id="cancelarCadastro">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <div class="horizontal-card-container">
+                <section id="gerenciamentoRecursos" style="display:none;" class="painel-card">
+                    <h2 class="card-title" style="text-align: center;">Gerenciamento de Recursos</h2><br>
+                    <form id="formRecurso">
+                        <div class="input-group">
+                            <input type="text" id="nomeRecurso" placeholder="Nome do Recurso" required>
+                        </div>
+                        <div class="input-group">                    
+                            <select id="categoriaRecurso" required>
+                                <option value="">Categoria</option>
+                                <option value="equipamentos">Equipamentos</option>
+                                <option value="veiculos">Veículos</option>
+                                <option value="dispositivos de segurança">Dispositivos de Segurança</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <input type="number" id="quantidadeRecurso" placeholder="Quantidade" required min="1">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="descricaoRecurso" placeholder="Descrição do Recurso" required>
+                        </div>
+                        <div class="input-group">
+                            <select id="prioridadeRecurso" required>
+                                <option value="">Prioridade</option>
+                                <option value="Alta">Alta</option>
+                                <option value="Média">Média</option> 
+                                <option value="Baixa">Baixa</option>                                              
+                            </select>
+                        </div>
+                        <div class="button-container">
+                            <button type="button" class="add-button" id="adicionarRecurso">Adicionar Recurso</button>
+                            <button type="button" class="filter-button" id="filtrarRecursos">Filtrar Recursos</button>
+                            <button type="button" class="remove-button" id="removerTodosRecursos">Remover Tudo</button>
+                        </div>
+                    </form>
+                </section>
+            
+                <section id="listaRecursosCard" style="display:none;" class="painel-card">
+                    <h2 class="card-title" style="text-align: center;">Lista de Recursos</h2>
+                    <div id="listaRecursosContainer">
+                        <ul id="listaRecursos">
+                            <li>
+                                <div class="item-info">
+                                    <span class="label">Nome:</span> <span class="valor"></span><br>
+                                    <span class="label">Categoria:</span> <span class="valor"></span><br>
+                                    <span class="label">Quantidade:</span> <span class="valor"></span><br>
+                                    <span class="label">Descrição:</span> <span class="valor"></span><br>
+                                    <span class="label">Prioridade:</span> <span class="valor"></span>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="edit-button">Editar</button>
+                                    <button class="remove-button">Remover</button>
+                                </div>
+                            </li>                            
+                        </ul>
+                    </div>
+                </section>
+            
+                <section id="painelControle" style="display:none;" class="painel-card">
+                    <h2 class="card-title" style="text-align: center;">Total de Recursos</h2>
+                    <div id="graficoContainer">
+                        <canvas id="graficoRecursos"></canvas>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 - Indústrias Wayne. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <button id="voltarAoTopo" aria-label="Voltar ao topo">↑</button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
